@@ -227,6 +227,156 @@
         [data-theme="light"] .pd-label {
             color: #475569;
         }
+
+
+
+
+
+
+
+	   .code-container {
+    position: relative;
+    width: 580px;
+}
+
+/* Jendela Utama */
+.main-window {
+    background: #0b1329;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.1);
+    overflow: hidden;
+    width: 100%;
+}
+
+.window-header {
+    background: #0f172a;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #1e293b;
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.dots {
+    display: flex;
+    gap: 6px;
+    margin-right: 15px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.window-body {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.window-footer {
+    background: #070c14;
+    padding: 6px 15px;
+    font-size: 11px;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #1e293b;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background-color: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+    box-shadow: 0 0 6px #10b981;
+}
+
+/* Syntax Highlighting */
+.keyword { color: #c678dd; }
+.class-name { color: #e5c07b; }
+.string { color: #98c379; }
+.boolean { color: #d19a66; }
+
+/* Terminal Prompt */
+.terminal-prompt {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #1e293b;
+    color: #00f0ff;
+    font-size: 13px;
+}
+.prompt-symbol { color: #61afef; }
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background: #00f0ff;
+    animation: blink 1s infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Kotak Melayang (Floating Boxes) */
+.floating-box {
+    position: absolute;
+    background: #0b1329;
+    border: 1px solid #1f2937;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.floating-box.top-right {
+    top: -30px;
+    right: -40px;
+    width: 190px;
+}
+
+.floating-box.bottom-left {
+    bottom: -35px;
+    left: -40px;
+    width: 175px;
+}
+
+.window-header.small {
+    padding: 6px 10px;
+    font-size: 11px;
+}
+
+.window-body.small {
+    padding: 10px;
+    font-size: 11px;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #00f0ff;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    box-shadow: 0 0 5px #00f0ff;
+}
+
+.window-body.small.mikrotik {
+    color: #61afef;
+    line-height: 1.4;
+}
         
     </style>
 </head>
@@ -262,9 +412,67 @@
                 <a href="https://github.com/arwinthoriq"target="_blank"><svg class="social-icon" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
             </div>
         </div>
-        <div class="hero-image">
-            <div class="circle-bg"><img src="PHOTO_PROFIL_UTAMA.jpg" alt="Profile"></div>
+        <div class="code-container">
+    <!-- Jendela Kode Utama -->
+    <div class="main-window">
+        <div class="window-header">
+            <div class="dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="filename">
+                <span>>_</span> developer-profile.ts
+            </div>
         </div>
+        <div class="window-body">
+            <pre><code><span class="keyword">interface</span> <span class="class-name">Developer</span> {
+    name: <span class="string">'Arwin Thoriq'</span>;
+    role: <span class="string">'Web Developer & IT Support'</span>;
+    skills: [ <span class="string">'PHP/Laravel'</span>, <span class="string">'JavaScript'</span>, <span class="string">'MySQL'</span>, <span class="string">'MikroTik'</span> ];
+    focus: <span class="string">'SIMRS, Web App, & Security'</span>;
+    availableForHire: <span class="boolean">true</span>;
+}</code></pre>
+            <div class="terminal-prompt">
+                <span class="prompt-symbol">:~#</span> npm run build:success <span class="cursor"></span>
+            </div>
+        </div>
+        <div class="window-footer">
+            <span class="status-dot"></span> System Normal &nbsp;&nbsp; UTF-8
+        </div>
+    </div>
+
+    <!-- Kotak Kecil Kanan Atas -->
+    <div class="floating-box top-right">
+        <div class="window-header small">
+            <div class="dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="filename">system.config.js</div>
+        </div>
+        <div class="window-body small">
+            <pre><code><span class="keyword">const</span> dev = {
+    name: <span class="string">"Arwin"</span>,
+    status: <span class="string">"Ready"</span>
+};</code></pre>
+        </div>
+    </div>
+
+    <!-- Kotak Kecil Kiri Bawah (MikroTik) -->
+    <div class="floating-box bottom-left">
+        <div class="window-header small">
+            <span class="badge-dot"></span> MikroTik RouterOS
+        </div>
+        <div class="window-body small mikrotik">
+            <code>/ip firewall nat<br>
+add chain=srcnat<br>
+out-interface=WAN<br>
+action=masquerade</code>
+        </div>
+    </div>
+</div>
     </section>
 
 <section id="about">
