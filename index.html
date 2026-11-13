@@ -234,38 +234,21 @@
 
 
 
-/* Kontainer Utama Hero */
-.hero-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem 1rem;
-    background-color: #0b0f19; /* Sesuaikan dengan warna latar website kamu */
-    color: #ffffff;
-    width: 100%;
-    box-sizing: border-box;
-    overflow: hidden; /* Mencegah elemen keluar batas layar */
-}
-
-.hero-content {
-    text-align: center;
-    margin-bottom: 2rem;
-    width: 100%;
-}
-
-/* KUNCI UTAMA: Pembungkus Terminal agar Responsif */
+/* Kontainer Utama Terminal - Kunci agar tidak merusak layout website */
 .hero-terminal-container {
     width: 100%;
-    max-width: 550px; /* Batas lebar maksimal di desktop */
+    max-width: 520px; /* Lebar maksimal di desktop */
+    min-width: 0; /* Mencegah flexbox/grid anak meluber */
     background: #121826;
     border-radius: 8px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    overflow: hidden; /* Mengunci sudut border radius */
-    box-sizing: border-box;
     border: 1px solid #1f293d;
+    box-sizing: border-box;
+    margin: 1.5rem auto; /* Posisi di tengah */
+    overflow: hidden; /* Mengunci agar isi tidak keluar dari border-radius */
 }
 
-/* Header Terminal (Tombol titik merah, kuning, hijau) */
+/* Header Terminal (Titik Merah, Kuning, Hijau) */
 .terminal-header {
     background: #1a2234;
     padding: 10px 15px;
@@ -278,8 +261,8 @@
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     display: inline-block;
 }
@@ -289,28 +272,41 @@
 
 .terminal-header .title {
     margin-left: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Bagian Isi Kode Terminal */
+/* Bagian Badan Terminal */
 .terminal-body {
     padding: 15px;
     box-sizing: border-box;
+    width: 100%;
 }
 
+/* Bagian Pre & Code: Menangani Scroll Horizontal agar tidak merusak layout luar */
 .terminal-body pre {
     margin: 0;
     width: 100%;
-    overflow-x: auto; /* Memunculkan scrollbar horizontal khusus di dalam kotak jika layar terlalu sempit */
+    overflow-x: auto; /* Memunculkan scrollbar horizontal khusus di dalam kotak jika layar terlalu kecil */
     -webkit-overflow-scrolling: touch;
 }
 
-.terminal-body code {
+.terminal-body code.ts-code {
     font-family: 'Fira Code', Consolas, Monaco, monospace;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
     color: #cbd5e1;
     display: block;
-    white-space: pre; /* Menjaga format baris kode tetap rapi */
+    white-space: pre; /* Mempertahankan format baris kode */
 }
+
+/* Mengembalikan Warna Syntax Highlighting ala TypeScript/VS Code */
+.terminal-body code .keyword { color: #c678dd; }   /* Ungu untuk interface, let, const */
+.terminal-body code .type { color: #e5c07b; }      /* Kuning untuk nama tipe data/class */
+.terminal-body code .property { color: #61afef; }  /* Biru untuk properti key */
+.terminal-body code .string { color: #98c379; }    /* Hijau untuk teks/string */
+.terminal-body code .boolean { color: #d19a66; }   /* Oranye untuk true/false */
 
 /* Footer Terminal */
 .terminal-footer {
@@ -318,29 +314,34 @@
     padding-top: 10px;
     border-top: 1px solid #1f293d;
     font-family: monospace;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: #38bdf8;
     display: flex;
     align-items: center;
     gap: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .status-dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     background-color: #22c55e;
     border-radius: 50%;
     display: inline-block;
 }
 
-/* Media Query Tambahan untuk Layar Sangat Kecil (Mobile HP) */
-@media screen and (max-width: 480px) {
+/* Media Query untuk Layar Mobile Kecil */
+@media screen and (max-width: 576px) {
     .hero-terminal-container {
-        max-width: 100%; /* Memastikan lebar pas mengikuti layar HP */
+        max-width: 100%; /* Memastikan lebar memenuhi layar perangkat seluler dengan aman */
+        margin-left: 10px;
+        margin-right: 10px;
     }
     
-    .terminal-body code {
-        font-size: 0.75rem; /* Mengecilkan sedikit ukuran font kode di layar kecil */
+    .terminal-body code.ts-code {
+        font-size: 0.75rem; /* Mengecilkan sedikit ukuran font agar muat lebih banyak di HP */
     }
 }
         
@@ -386,28 +387,29 @@
 			
 <!-- Kotak Terminal yang Diperbaiki -->
     <div class="hero-terminal-container">
-        <div class="terminal-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-            <span class="title">>_ developer-profile.ts</span>
-        </div>
-        <div class="terminal-body">
-            <pre><code>interface Developer {
-    name: 'Arwin Thoriq';
-    role: 'Web Developer & IT Support';
-    skills: [ 'PHP/Laravel', 'JavaScript', 'MySQL', 'MikroTik' ];
-    expertise: {
-        hardware: [ 'PC Assembly', 'Troubleshooting', 'Maintenance' ],
-        software: [ 'PHP/Laravel', 'MySQL', 'Python' ],
-        network: [ 'MikroTik', 'Dual-WAN', 'Routing' ]
+    <div class="terminal-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="title">>_ developer-profile.ts</span>
+    </div>
+    <div class="terminal-body">
+        <pre><code class="ts-code"><span class="keyword">interface</span> <span class="type">Developer</span> {
+    <span class="property">name</span>: <span class="string">'Arwin Thoriq'</span>;
+    <span class="property">role</span>: <span class="string">'Web Developer & IT Support'</span>;
+    <span class="property">skills</span>: [ <span class="string">'PHP/Laravel'</span>, <span class="string">'JavaScript'</span>, <span class="string">'MySQL'</span>, <span class="string">'MikroTik'</span> ];
+    <span class="property">expertise</span>: {
+        <span class="property">hardware</span>: [ <span class="string">'PC Assembly'</span>, <span class="string">'Troubleshooting'</span>, <span class="string">'Maintenance'</span> ],
+        <span class="property">software</span>: [ <span class="string">'PHP/Laravel'</span>, <span class="string">'MySQL'</span>, <span class="string">'Python'</span> ],
+        <span class="property">network</span>: [ <span class="string">'MikroTik'</span>, <span class="string">'Dual-WAN'</span>, <span class="string">'Routing'</span> ]
     };
-    availableForHire: true;
+    <span class="property">availableForHire</span>: <span class="boolean">true</span>;
 }</code></pre>
-            <div class="terminal-footer">
-                :~# npm run build:success <span class="status-dot"></span> System Normal &nbsp;&nbsp; UTF-8
-            </div>
+        <div class="terminal-footer">
+            :~# npm run build:success <span class="status-dot"></span> System Normal &nbsp;&nbsp; UTF-8
         </div>
+    </div>
+</div>
 
 
 
