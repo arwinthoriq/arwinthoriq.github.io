@@ -234,148 +234,114 @@
 
 
 
-	   .code-container {
-    position: relative;
-    width: 580px;
+/* Kontainer Utama Hero */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    background-color: #0b0f19; /* Sesuaikan dengan warna latar website kamu */
+    color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* Mencegah elemen keluar batas layar */
 }
 
-/* Jendela Utama */
-.main-window {
-    background: #0b1329;
-    border: 1px solid #1f2937;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.1);
-    overflow: hidden;
+.hero-content {
+    text-align: center;
+    margin-bottom: 2rem;
     width: 100%;
 }
 
-.window-header {
-    background: #0f172a;
+/* KUNCI UTAMA: Pembungkus Terminal agar Responsif */
+.hero-terminal-container {
+    width: 100%;
+    max-width: 550px; /* Batas lebar maksimal di desktop */
+    background: #121826;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    overflow: hidden; /* Mengunci sudut border radius */
+    box-sizing: border-box;
+    border: 1px solid #1f293d;
+}
+
+/* Header Terminal (Tombol titik merah, kuning, hijau) */
+.terminal-header {
+    background: #1a2234;
     padding: 10px 15px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #1e293b;
-    font-size: 13px;
+    gap: 8px;
+    font-family: monospace;
+    font-size: 0.85rem;
     color: #94a3b8;
 }
 
-.dots {
-    display: flex;
-    gap: 6px;
-    margin-right: 15px;
-}
-
 .dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
+    display: inline-block;
 }
-.dot.red { background: #ff5f56; }
-.dot.yellow { background: #ffbd2e; }
-.dot.green { background: #27c93f; }
+.dot.red { background-color: #ff5f56; }
+.dot.yellow { background-color: #ffbd2e; }
+.dot.green { background-color: #27c93f; }
 
-.window-body {
-    padding: 20px;
-    font-size: 14px;
-    line-height: 1.6;
+.terminal-header .title {
+    margin-left: 5px;
 }
 
-.window-footer {
-    background: #070c14;
-    padding: 6px 15px;
-    font-size: 11px;
-    color: #64748b;
+/* Bagian Isi Kode Terminal */
+.terminal-body {
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.terminal-body pre {
+    margin: 0;
+    width: 100%;
+    overflow-x: auto; /* Memunculkan scrollbar horizontal khusus di dalam kotak jika layar terlalu sempit */
+    -webkit-overflow-scrolling: touch;
+}
+
+.terminal-body code {
+    font-family: 'Fira Code', Consolas, Monaco, monospace;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    display: block;
+    white-space: pre; /* Menjaga format baris kode tetap rapi */
+}
+
+/* Footer Terminal */
+.terminal-footer {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #1f293d;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: #38bdf8;
     display: flex;
     align-items: center;
-    border-top: 1px solid #1e293b;
+    gap: 6px;
 }
 
 .status-dot {
-    width: 7px;
-    height: 7px;
-    background-color: #10b981;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 6px;
-    box-shadow: 0 0 6px #10b981;
-}
-
-/* Syntax Highlighting */
-.keyword { color: #c678dd; }
-.class-name { color: #e5c07b; }
-.string { color: #98c379; }
-.boolean { color: #d19a66; }
-
-/* Terminal Prompt */
-.terminal-prompt {
-    margin-top: 15px;
-    padding-top: 10px;
-    border-top: 1px dashed #1e293b;
-    color: #00f0ff;
-    font-size: 13px;
-}
-.prompt-symbol { color: #61afef; }
-.cursor {
-    display: inline-block;
     width: 8px;
-    height: 15px;
-    background: #00f0ff;
-    animation: blink 1s infinite;
-    vertical-align: middle;
-}
-
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
-
-/* Kotak Melayang (Floating Boxes) */
-.floating-box {
-    position: absolute;
-    background: #0b1329;
-    border: 1px solid #1f2937;
-    border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    font-size: 12px;
-    overflow: hidden;
-    z-index: 10;
-}
-
-.floating-box.top-right {
-    top: -30px;
-    right: -40px;
-    width: 190px;
-}
-
-.floating-box.bottom-left {
-    bottom: -35px;
-    left: -40px;
-    width: 175px;
-}
-
-.window-header.small {
-    padding: 6px 10px;
-    font-size: 11px;
-}
-
-.window-body.small {
-    padding: 10px;
-    font-size: 11px;
-}
-
-.badge-dot {
-    width: 6px;
-    height: 6px;
-    background-color: #00f0ff;
+    height: 8px;
+    background-color: #22c55e;
     border-radius: 50%;
     display: inline-block;
-    margin-right: 5px;
-    box-shadow: 0 0 5px #00f0ff;
 }
 
-.window-body.small.mikrotik {
-    color: #61afef;
-    line-height: 1.4;
+/* Media Query Tambahan untuk Layar Sangat Kecil (Mobile HP) */
+@media screen and (max-width: 480px) {
+    .hero-terminal-container {
+        max-width: 100%; /* Memastikan lebar pas mengikuti layar HP */
+    }
+    
+    .terminal-body code {
+        font-size: 0.75rem; /* Mengecilkan sedikit ukuran font kode di layar kecil */
+    }
 }
         
     </style>
@@ -412,39 +378,36 @@
                 <a href="https://github.com/arwinthoriq"target="_blank"><svg class="social-icon" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
             </div>
         </div>
+
+		
         <div class="code-container">
-    <!-- Jendela Kode Utama -->
-    <div class="main-window">
-        <div class="window-header">
-            <div class="dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-            </div>
-            <div class="filename">
-                <span>>_</span> developer-profile.ts
-            </div>
+
+
+			
+<!-- Kotak Terminal yang Diperbaiki -->
+    <div class="hero-terminal-container">
+        <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="title">>_ developer-profile.ts</span>
         </div>
-        <div class="window-body">
-            <pre><code><span class="keyword">interface</span> <span class="class-name">Developer</span> {
-    name: <span class="string">'Arwin Thoriq'</span>;
-    role: <span class="string">'Web Developer & IT Support'</span>;
-    skills: [ <span class="string">'PHP/Laravel'</span>, <span class="string">'JavaScript'</span>, <span class="string">'MySQL'</span>, <span class="string">'MikroTik'</span> ];
+        <div class="terminal-body">
+            <pre><code>interface Developer {
+    name: 'Arwin Thoriq';
+    role: 'Web Developer & IT Support';
+    skills: [ 'PHP/Laravel', 'JavaScript', 'MySQL', 'MikroTik' ];
     expertise: {
-        hardware: [ <span class="string">'PC Assembly'</span>, <span class="string">'Troubleshooting'</span>, <span class="string">'Maintenance'</span> ],
-        software: [ <span class="string">'PHP/Laravel'</span>, <span class="string">'MySQL'</span>, <span class="string">'Python'</span> ],
-        network: [ <span class="string">'MikroTik'</span>, <span class="string">'Dual-WAN'</span>, <span class="string">'Routing'</span> ]
+        hardware: [ 'PC Assembly', 'Troubleshooting', 'Maintenance' ],
+        software: [ 'PHP/Laravel', 'MySQL', 'Python' ],
+        network: [ 'MikroTik', 'Dual-WAN', 'Routing' ]
     };
-    availableForHire: <span class="boolean">true</span>;
+    availableForHire: true;
 }</code></pre>
-            <div class="terminal-prompt">
-                <span class="prompt-symbol">:~#</span> npm run build:success <span class="cursor"></span>
+            <div class="terminal-footer">
+                :~# npm run build:success <span class="status-dot"></span> System Normal &nbsp;&nbsp; UTF-8
             </div>
         </div>
-        <div class="window-footer">
-            <span class="status-dot"></span> System Normal &nbsp;&nbsp; UTF-8
-        </div>
-    </div>
 
 
 
